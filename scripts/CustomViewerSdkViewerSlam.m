@@ -6,17 +6,18 @@ addpath(genpath(pwd));
 
 TAG = 'CustomViewerSdkViewerSlam';
 
-cXvisioDatasetFolderPath = 'E:\GitHubRepositories\XvisioProject\datas\2023-03-30T11-22-52';
+cXvisioDatasetRootFolderPath = 'E:\GitHubRepositories\XvisioProject\datasets';
+cXvisioDatasetFolderName = '2023-03-30T15-13-23';
 cXvisioDatasetEdgeDataFileName = 'edge.csv';
 cXvisioDatasetHostDataFileName = 'host.csv';
 
-% cXvisioDatasetEdgeDataFilePath = fullfile(cXvisioDatasetFolderPath,cXvisioDatasetEdgeDataFileName);
+% cXvisioDatasetEdgeDataFilePath = fullfile(cXvisioDatasetRootFolderPath,cXvisioDatasetFolderName,cXvisioDatasetEdgeDataFileName);
 % cXvisioDatasetEdgeData = loadXvisioSdkViewerWindowSlamData(cXvisioDatasetEdgeDataFilePath);
 
-cXvisioDatasetHostDataFilePath = fullfile(cXvisioDatasetFolderPath,cXvisioDatasetHostDataFileName);
+cXvisioDatasetHostDataFilePath = fullfile(cXvisioDatasetRootFolderPath,cXvisioDatasetFolderName,cXvisioDatasetHostDataFileName);
 cXvisioDatasetHostData = loadXvisioSdkViewerWindowSlamData(cXvisioDatasetHostDataFilePath);
 
-pIndex = 1:500*20;
+cXvisioDatasetHostDataSize = size(cXvisioDatasetHostData,1);
+pIndex = 1:cXvisioDatasetHostDataSize;
 pPose = cXvisioDatasetHostData(pIndex,:);
 plotSEBracket3Pose(pPose);
-
